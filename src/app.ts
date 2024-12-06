@@ -56,6 +56,7 @@ io.on('connection', (socket) => {
 	}
 
 	let roomId
+	let copyOfWordsList = [...words]
 
 	socket.on('disconnect', async () => {
 		try {
@@ -191,7 +192,8 @@ io.on('connection', (socket) => {
 		const allGuessed = room.users.every((user) => user.guessed)
 		if (allGuessed) {
 			// Set room status to finished
-			const word = words[Math.floor(Math.random() * words.length)]
+			const word = copyOfWordsList[Math.floor(Math.random() * copyOfWordsList.length)]
+			copyOfWordsList = copyOfWordsList.filter((w) => w !== word)
 			const images = await search(word)
 			const image = images.slice(0, 4)
 
@@ -336,7 +338,8 @@ io.on('connection', (socket) => {
 				return
 			}
 
-			const word = words[Math.floor(Math.random() * words.length)]
+			const word = copyOfWordsList[Math.floor(Math.random() * copyOfWordsList.length)]
+			copyOfWordsList = copyOfWordsList.filter((w) => w !== word)
 			const images = await search(word)
 			const image = images.slice(0, 4)
 
