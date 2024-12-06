@@ -1,32 +1,33 @@
 {
-  "name": "google-search-guesser",
-  "version": "1.0.0",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
-  "dependencies": {
-    "@types/mongoose": "^5.11.96",
-    "dotenv": "^16.4.7",
-    "express": "^4.21.2",
-    "googlethis": "^1.8.0",
-    "i": "^0.3.7",
-    "images-scraper": "^7.0.0",
-    "mongoose": "^8.8.4",
-    "npm": "^10.9.2",
-    "request": "^2.88.2",
-    "socket.io": "^4.8.1",
-    "uuid": "^11.0.3"
-  },
-  "devDependencies": {
-    "@types/lodash": "^4.17.13",
-    "nodemon": "^3.1.7",
-    "ts-node": "^10.9.2",
-    "tsx": "^4.19.2"
-  }
+	"name": "google-search-guesser",
+	"version": "1.0.0",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"dev": "nodemon",
+		"start": "ts-node ./src/app.ts"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"description": "",
+	"dependencies": {
+		"@types/mongoose": "^5.11.96",
+		"dotenv": "^16.4.7",
+		"express": "^4.21.2",
+		"googlethis": "^1.8.0",
+		"i": "^0.3.7",
+		"images-scraper": "^7.0.0",
+		"mongoose": "^8.8.4",
+		"npm": "^10.9.2",
+		"request": "^2.88.2",
+		"socket.io": "^4.8.1",
+		"uuid": "^11.0.3"
+	},
+	"devDependencies": {
+		"@types/lodash": "^4.17.13",
+		"nodemon": "^3.1.7",
+		"ts-node": "^10.9.2",
+		"tsx": "^4.19.2"
+	}
 }
