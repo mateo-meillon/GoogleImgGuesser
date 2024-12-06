@@ -10,6 +10,8 @@ jobs:
         steps:
             - name: Check out repository code
               uses: actions/checkout@v3
+            - name: Node Js
+              uses: actions/setup-node@v1
             - name: Installing dependencies
               run: npm install
             - name: Deleting old folder
