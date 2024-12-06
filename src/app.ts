@@ -244,8 +244,13 @@ io.on('connection', (socket) => {
 
 			if (room.word.toLowerCase() == data.message.toLowerCase()) {
 				// Set User as guessed
-				room.users.forEach((user) => {
-					if (user.socketId == socket.id) user.guessed = true
+				await Room.findByIdAndUpdate(roomId, {
+					users: room.users.map((u) => {
+						if (u.socketId == user.id) {
+							u.guessed = true
+						}
+						return u
+					}),
 				})
 
 				io.to(user.id).emit('won')
