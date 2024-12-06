@@ -26,7 +26,7 @@ async function search(word) {
 		safe: true,
 		additional_params: {
 			// add additional parameters here, see https://moz.com/blog/the-ultimate-guide-to-the-google-search-parameters and https://www.seoquake.com/blog/google-search-param/
-			hl: 'us',
+			hl: 'de',
 		},
 	}
 	const response = await google.image(word, options)
