@@ -5,12 +5,12 @@ import fs from 'fs'
 import google from 'googlethis'
 import { Server } from 'socket.io'
 import { Room } from './schemas/Room'
+import path from 'path'
 import dotenv from 'dotenv'
 dotenv.config()
 
 const app = express()
 
-app.use(express.static('frontend'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
@@ -33,15 +33,9 @@ async function search(word) {
 	return response
 }
 
-app.get('/', (req, res) => {
-	res.sendFile(__dirname + '/frontend/index.html')
-})
-app.get('/:id', (req, res) => {
-	res.sendFile(__dirname + '/frontend/' + req.params.id)
-})
-
-app.get('/room/:id', (req, res) => {
-	res.sendFile(__dirname + '/frontend/index.html')
+app.use(express.static(path.join(__dirname, 'public')))
+app.get('*', (req, res) => {
+	res.sendFile(path.join(__dirname, 'public', 'index.html'))
 })
 
 const clearDb = async () => {
