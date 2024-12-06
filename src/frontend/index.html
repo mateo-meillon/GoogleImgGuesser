@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <title>Google img Guesser</title>
+</head>
+
+<body>
+    <div class="images">
+        <div id="images">
+            <div class="simgage"></div>
+            <div class="simgage"></div>
+            <div class="simgage"></div>
+            <div class="simgage"></div>
+        </div>
+    </div>
+    <div class="chat">
+        <div class="container">
+            <div class="message-container" id="cont"></div>
+        </div>
+        <input placeholder="Guess the google search..." type="text" onkeydown="newMessage(this)">
+    </div>
+    <div id="loading" style="display: none;">
+        <div class="center">
+            <div class="loading">
+                <div class="circle"></div>
+                <div class="circle"></div>
+                <div class="circle"></div>
+                <div class="circle"></div>
+            </div>
+            <div class="rigth">
+                <div id="message">Reconnecting...</div>
+                <div id="subtitle">Please make sure you have an internet connection</div>
+            </div>
+        </div>
+    </div>
+    <div class="bar">
+        <div class="container">
+            <div class="title">© Googleimgguesser.com</div>
+            <div class="rigth">
+                <div class="btn" id="invite">Invite friends</div>
+                <div class="btn" id="skip">Skip</div>
+                <div class="btn" id="start">Start</div>
+            </div>
+        </div>
+    </div>
+    <div class="scoreboard">
+        <div class="title">Scoreboard</div>
+        <div id="users"></div>
+    </div>
+    <div id="points"></div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/index.js"></script>
+</body>
+
+</html>
