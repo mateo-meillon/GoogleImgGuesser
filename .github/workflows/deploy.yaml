@@ -1,0 +1,29 @@
+name: Deploy
+run-name: ${{ github.actor }} is deploying a new version of the the GoogleImgGuesser project 🚀
+on:
+    push:
+        branches:
+            - main
+jobs:
+    Deploy-GoogleImgGuesser:
+        runs-on: self-hosted
+        steps:
+            - name: Check out repository code
+              uses: actions/checkout@v3
+            - name: Installing dependencies
+              run: npm install
+            - name: Deleting old folder
+              run: rm -r /home/github/public/googleimgguesser
+            - name: Moving new files to public folder
+              run: mv dist /home/github/public/googleimgguesser
+            - name: Move to public folder
+              run: cd /home/github/public/googleimgguesser
+            - name: Stop server
+              run: pm2 stop npm
+              continue-on-error: true
+            - name: Start server
+              run: pm2 start npm -- start
+            - name: Save pm2 process
+              run: pm2 save
+            - name: Deployed successfully
+              run: echo "Deployed successfully"
