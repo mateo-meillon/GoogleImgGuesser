@@ -83,7 +83,7 @@ io.on('connection', (socket) => {
 				)
 
 				// Emit all users in room to user in room
-				io.to(roomId).emit('users', { users: updateRoom.users })
+				io.to(roomId).emit('users', { users: updateRoom.users?.map((u) => ({ username: u.username, points: u.points })) })
 				room.save()
 			}
 
@@ -170,7 +170,7 @@ io.on('connection', (socket) => {
 
 			room.users.forEach((u) => {
 				users.push({
-					name: u.username,
+					username: u.username,
 					points: u.points,
 				})
 			})
@@ -314,7 +314,7 @@ io.on('connection', (socket) => {
 				{ new: true },
 			)
 
-			io.to(roomId).emit('users', { users: updatedRoom.users })
+			io.to(roomId).emit('users', { users: updatedRoom.users?.map((u) => ({ username: u.username, points: u.points })) })
 		} catch (error) {
 			console.log(error)
 			socket.emit('message', { message: 'Error while setting alias!' })
