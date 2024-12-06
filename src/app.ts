@@ -102,7 +102,7 @@ io.on('connection', (socket) => {
 			images: [],
 			users: [
 				{
-					name: user.alias,
+					username: user.alias,
 					socketId: user.id,
 					points: 0,
 					index: 0,
@@ -148,7 +148,7 @@ io.on('connection', (socket) => {
 					{
 						$push: {
 							users: {
-								name: user.alias,
+								username: user.alias,
 								socketId: user.id,
 								points: 0,
 								index: 0,
