@@ -17,7 +17,7 @@ jobs:
             - name: Deleting old folder
               run: rm -r /home/github/public/googleimgguesser
             - name: Moving new files to public folder
-              run: mv dist /home/github/public/googleimgguesser
+              run: mv * /home/github/public/googleimgguesser
             - name: Move to public folder
               run: cd /home/github/public/googleimgguesser
             - name: Stop server
