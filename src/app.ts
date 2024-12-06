@@ -176,6 +176,11 @@ io.on('connection', (socket) => {
 			})
 
 			io.to(roomId).emit('users', { users: users })
+
+			if (room.status === 'started') {
+				const index = room.users.find((u) => u.socketId == user.id).index
+				if (index < 4) io.to(user.id).emit('image', { url: room.images[index]?.url, index: index })
+			}
 		} catch (error) {
 			console.log(error)
 			socket.emit('message', { message: 'Error while joining room!' })
