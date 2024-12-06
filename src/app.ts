@@ -182,8 +182,9 @@ io.on('connection', (socket) => {
 		}
 	})
 
-	const didAllUsersGuessed = async (room) => {
+	const didAllUsersGuessed = async (roomId) => {
 		// Check if all users are guessed
+		const room = await Room.findById(roomId)
 		const allGuessed = room.users.every((user) => user.guessed)
 		if (allGuessed) {
 			// Set room status to finished
@@ -245,7 +246,7 @@ io.on('connection', (socket) => {
 				io.to(user.id).emit('won')
 				io.in(roomId).emit('message', { message: `${user.alias} has guessed the word!` })
 
-				await didAllUsersGuessed(room)
+				await didAllUsersGuessed(room._id)
 			} else {
 				io.in(roomId).emit('chat', { message: data.message, user: user.alias || user.id, success: false })
 
@@ -277,7 +278,7 @@ io.on('connection', (socket) => {
 						}),
 					})
 
-					await didAllUsersGuessed(room)
+					await didAllUsersGuessed(room._id)
 				}
 			}
 		} catch (error) {
