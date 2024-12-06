@@ -16,6 +16,7 @@ jobs:
               run: npm install
             - name: Deleting old folder
               run: rm -r /home/github/public/googleimgguesser
+              continue-on-error: true
             - name: Moving new files to public folder
               run: mv * /home/github/public/googleimgguesser
             - name: Move to public folder
