@@ -58,8 +58,6 @@ io.on('connection', (socket) => {
 	let roomId
 
 	socket.on('disconnect', async () => {
-		console.log(`User ${user.alias} disconnected`)
-
 		try {
 			const room = await Room.findById(roomId)
 
@@ -213,8 +211,6 @@ io.on('connection', (socket) => {
 				},
 				{ new: true },
 			)
-
-			console.log(newRoom)
 
 			io.in(roomId).emit('message', { message: `The word was`, word: room.word })
 			io.to(roomId).emit('image', { url: image[0]?.url, index: 0 })
